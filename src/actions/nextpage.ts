@@ -7,13 +7,13 @@ export default async (ctx: any): Promise<any> => {
     return
   }
 
-  const str: string = Buffer.from(ctx.callbackQuery.message.text, 'base64').toString()
+  const str: string = Buffer.from(ctx.callbackQuery.data.replace(/nextpage$/, ''), 'base64').toString()
   const keyword: string = str.slice(0, str.lastIndexOf(' '))
-  const pages: number = Number(str.slice(str.lastIndexOf(' ') + 1)) - 1
+  const pages: number = Number(str.slice(str.lastIndexOf(' ') + 1))
 
   ctx.answerCbQuery()
 
-  const result = await results(keyword, (pages - 1) * 10)
+  const result = await results(keyword, pages * 10)
 
   if (result[1] === 0) {
     return
@@ -21,6 +21,7 @@ export default async (ctx: any): Promise<any> => {
 
   ctx.editMessageText(result[0], {
     ...page(result[1], pages + 1, Buffer.from(`${keyword} ${pages + 1}`).toString('base64'), ctx),
-    disable_web_page_preview: true
+    disable_web_page_preview: true,
+    parse_mode: 'Markdown'
   })
 }

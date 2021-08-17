@@ -32,7 +32,7 @@ export default async (text: string, skip: number): Promise<[string, number]> => 
 
   for (let i = 0; i < (results.length === 11 ? 10 : results.length); i++) {
     results[i].title = markdown(results[i].title)
-    msg += `${i + 1}. ${emoji(results[i].type[0])} [${results[i].title.length > 20
+    msg += `${skip + i + 1}. ${emoji(results[i].type[0])} [${results[i].title.length > 20
       ? results[i].title.substr(0, 20) + '...'
       : results[i].title}](https://t.me/${results[i].username[0]})` + '\n'
   }

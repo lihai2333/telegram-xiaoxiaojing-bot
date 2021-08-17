@@ -16,7 +16,7 @@ export default async (ctx: any): Promise<void> => {
 
   if (result[1] === 11) {
     ctx.replyWithMarkdown(result[0], {
-      ...page(1, 11, Buffer.from(`${ctx.message.text} 1`).toString('base64'), ctx),
+      ...page(11, 1, Buffer.from(`${ctx.message.text} 1`).toString('base64'), ctx),
       disable_web_page_preview: true
     })
   } else if (result[1] === 0) {
