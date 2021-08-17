@@ -1,0 +1,40 @@
+{
+  "name": "xiaolanjing-bot",
+  "version": "1.0.0",
+  "private": true,
+  "author": "lihai2333",
+  "license": "AGPL-3.0",
+  "scripts": {
+    "test": "mocha -t 5000ms --require ts-node/register test/*.ts",
+    "lint": "eslint \"src/**\""
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "node-fetch": "^2.6.1",
+    "qrcode": "^1.4.4",
+    "redis": "^3.1.2",
+    "solwr": "^0.1.3",
+    "telegraf": "^4.4.1",
+    "telegraf-i18n": "^6.6.0",
+    "telegraf-session-redis": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.6.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "chai": "^4.3.4",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "mocha": "^9.0.3",
+    "ts-node": "^10.2.0",
+    "ts-standard": "^10.0.0",
+    "typegram": "^3.4.3",
+    "typescript": "^4.3.5"
+  }
+}

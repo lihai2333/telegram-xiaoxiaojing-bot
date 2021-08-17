@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "built/",
+    "rootDir": "src/",
+    "module": "CommonJS",
+    "moduleResolution": "Node"
+  },
+  "include": [
+    "src/",
+    "index.d.ts"
+  ]
+}
