@@ -34,7 +34,7 @@ export default async (text: string, skip: number): Promise<[string, number]> => 
     results[i].title = markdown(results[i].title)
     msg += `${skip + i + 1}. ${emoji(results[i].type[0])} [${results[i].title.length > 20
       ? results[i].title.substr(0, 20) + '...'
-      : results[i].title}](https://t.me/${results[i].username[0]})` + '\n'
+      : results[i].title}](https://t.me/${results[i].username[0]})` + (results[i].type[0] === 'bot' ? '' : ` - ${results[i].members}`) + '\n'
   }
 
   return [msg, results.length]

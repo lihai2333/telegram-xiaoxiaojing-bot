@@ -12,11 +12,6 @@ async function check (username: string): Promise<boolean> {
     return true
   }
 
-  const result2 = await search.checkBlockList(username)
-  if (result2) {
-    return true
-  }
-
   return false
 }
 
