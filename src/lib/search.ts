@@ -47,7 +47,7 @@ export default class Search {
    * @param type     - 类型, 分三种: 机器人, 公开群组, 公开频道
    * @param members  - 人数, 机器人人数为 0
    */
-  async add (username: string, title: string, desc: string, type: 'bot' | 'supergroup' | 'channel', members: number): Promise<void> {
+  async add (username: string, title: string, desc: string, type: 'bot' | 'supergroup' | 'channel' | 'NSFWchannel', members: number): Promise<void> {
     await users.create({
       username,
       title,
@@ -82,7 +82,7 @@ export default class Search {
     const id: string = await this.check(username)
     await users.remove(`id:${id}`).exec()
 
-    const HDEL = promisify(client.hdel).bind(client)
+    const HDEL = promisify(client.HDEL).bind(client)
     await HDEL('xiaoxiaojingAddList', username)
   }
 

@@ -12,6 +12,9 @@ import update from './commands/update'
 import help from './commands/help'
 import start from './commands/start'
 import settings from './commands/settings'
+import addad from './commands/addad'
+import addadcontent from './commands/addadcontent'
+import buyad from './commands/buyad'
 
 // Actions import
 import lastpage from './actions/lastpage'
@@ -47,6 +50,9 @@ bot.settings(settings)
 bot
   .command('add', add)
   .command('update', update)
+  .command('addad', addad)
+  .command('addadcontent', addadcontent)
+  .command('buyad', buyad)
 
 bot
   .action(/^.+lastpage$/, lastpage)

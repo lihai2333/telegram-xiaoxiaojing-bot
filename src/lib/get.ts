@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio'
 
 interface Get {
   username: string
-  type: 'channel' | 'bot' | 'supergroup' | undefined
+  type: 'channel' | 'bot' | 'supergroup' | undefined | 'NSFWchannel'
   title: string
   description: string
   members: number
@@ -44,6 +44,10 @@ export default async (username: string): Promise<Get> => {
   obj.username = $('title').text().split('@')[1] ?? ''
   obj.title = $('.tgme_page_title span').text()
   obj.description = $('.tgme_page_description').text() ?? ''
+
+  if (obj.title === '') {
+    obj.type = 'NSFWchannel'
+  }
 
   return obj
 }

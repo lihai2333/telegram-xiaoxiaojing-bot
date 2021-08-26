@@ -12,7 +12,7 @@ export default async (ctx: any): Promise<void> => {
     return
   }
 
-  const result = await results(ctx.message.text, 0)
+  const result = await results(ctx.message.text, 0, ctx.session.ad)
 
   if (result[1] === 11) {
     ctx.replyWithMarkdown(result[0], {

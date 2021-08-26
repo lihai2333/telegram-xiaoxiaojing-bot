@@ -17,5 +17,10 @@ describe('Get', async () => {
     const result = await get('xiaolanjingroup')
     console.log(result)
   })
+
+  it('Get NSFW', async () => {
+    const result = await get('kesshanonatsu')
+    console.log(result)
+  })
 })
 

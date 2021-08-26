@@ -1,4 +1,5 @@
 import Search from './search'
+import Ad from './ad'
 
 import { markdown } from './escape'
 
@@ -11,7 +12,10 @@ interface Query {
   length: number
 }
 
-function emoji (type: 'bot' | 'supergroup' | 'channel'): string {
+const ad = new Ad()
+const search = new Search()
+
+function emoji (type: 'bot' | 'supergroup' | 'channel' | 'NSFWchannel'): string {
   if (type === 'bot') {
     return '\uD83E\uDD16'
   }
@@ -20,15 +24,15 @@ function emoji (type: 'bot' | 'supergroup' | 'channel'): string {
     return '\uD83D\uDC65'
   }
 
-  if (type === 'channel') {
+  if (type === 'channel' || type === 'NSFWchannel') {
     return '\uD83D\uDCE2'
   }
 }
 
-export default async (text: string, skip: number): Promise<[string, number]> => {
-  const results: Query[] = await new Search().find(text, skip)
+export default async (text: string, skip: number, adOpen: boolean): Promise<[string, number]> => {
+  const results: Query[] = await search.find(text, skip)
 
-  let msg: string = ''
+  let msg: string = (adOpen === true && results.length !== 0) ? `\\[Ad] ${await ad.getAdContent()}` + '\n\n' : ''
 
   for (let i = 0; i < (results.length === 11 ? 10 : results.length); i++) {
     results[i].title = markdown(results[i].title)

@@ -9,7 +9,7 @@ export default (ctx: any): void => {
 
   if (text === 'settings/') {
     ctx.editMessageText(ctx.i18n.t('settings/'), {
-      ...settings
+      ...settings(ctx)
     })
 
     return
@@ -28,7 +28,7 @@ export default (ctx: any): void => {
         setting[0] = ''
 
         ctx.i18n.locale(k[lang])
-        
+
         return settings(ctx)
       }
 
@@ -59,4 +59,3 @@ export default (ctx: any): void => {
     ...markup
   })
 }
-

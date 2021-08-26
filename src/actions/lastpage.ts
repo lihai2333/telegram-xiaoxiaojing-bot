@@ -17,7 +17,7 @@ export default async (ctx: any): Promise<void> => {
     return
   }
 
-  const result = await results(keyword, (pages - 2) * 10)
+  const result = await results(keyword, (pages - 2) * 10, ctx.session.ad)
 
   if (result[1] === 0) {
     return

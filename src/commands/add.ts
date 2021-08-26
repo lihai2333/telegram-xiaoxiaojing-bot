@@ -51,7 +51,7 @@ export default async (ctx: any): Promise<void> => {
       return
     }
 
-    ctx.chat.username = data.username
+    ctx.chat.username = option.toLowerCase().replace('@', '')
     type = data.type as t
   }
 
@@ -69,7 +69,7 @@ export default async (ctx: any): Promise<void> => {
     }
   }
 
-  const result: boolean = await check(ctx.chat.username)
+  const result: boolean = await check(ctx.chat.username.toLowerCase())
 
   if (result) {
     ctx.reply(ctx.i18n.t('alreadyExist'))
@@ -78,9 +78,9 @@ export default async (ctx: any): Promise<void> => {
 
   ctx.reply(ctx.i18n.t('addSuccess'))
 
-  await search.addAuditing(ctx.chat.username)
+  await search.addAuditing(ctx.chat.username.toLowerCase())
 
-  ctx.replyWithMarkdown(`*Username*: @${ctx.chat.username.replace(/_/g, '\\_')}
+  ctx.replyWithMarkdown(`*Username*: @${ctx.chat.username.toLowerCase().replace(/_/g, '\\_')}
 *Type*: ${type}`, {
     chat_id: config.group,
     ...Markup.inlineKeyboard([

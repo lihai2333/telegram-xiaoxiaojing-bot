@@ -13,7 +13,7 @@ export default async (ctx: any): Promise<any> => {
 
   ctx.answerCbQuery()
 
-  const result = await results(keyword, pages * 10)
+  const result = await results(keyword, pages * 10, ctx.session.ad)
 
   if (result[1] === 0) {
     return

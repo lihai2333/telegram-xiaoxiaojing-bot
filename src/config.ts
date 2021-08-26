@@ -14,5 +14,7 @@ export default {
   redis: {
     host: process.env.TELEGRAM_SESSION_HOST || '127.0.0.1', // Redis host
     port: process.env.TELEGRAM_SESSION_PORT || 6379 // Redis port
-  }
+  },
+
+  buyadUsername: process.env.TELEGRAM_SEARCH_BOT_BUYADUSERNAME || ''
 }

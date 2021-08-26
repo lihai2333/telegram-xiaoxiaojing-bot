@@ -1,6 +1,6 @@
 {
   "name": "xiaolanjing-bot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "author": "lihai2333",
   "license": "AGPL-3.0",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
+    "https-proxy-agent": "^5.0.0",
     "node-fetch": "^2.6.1",
     "qrcode": "^1.4.4",
     "redis": "^3.1.2",
@@ -21,18 +22,18 @@
   "devDependencies": {
     "@types/chai": "^4.2.21",
     "@types/mocha": "^9.0.0",
-    "@types/node": "^16.6.1",
+    "@types/node": "^16.7.1",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
     "chai": "^4.3.4",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-import": "^2.24.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-tsdoc": "^0.2.14",
-    "mocha": "^9.0.3",
-    "ts-node": "^10.2.0",
+    "mocha": "^9.1.0",
+    "ts-node": "^10.2.1",
     "ts-standard": "^10.0.0",
     "typegram": "^3.4.3",
     "typescript": "^4.3.5"
