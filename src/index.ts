@@ -15,6 +15,7 @@ import settings from './commands/settings'
 import addad from './commands/addad'
 import addadcontent from './commands/addadcontent'
 import buyad from './commands/buyad'
+import checkmy from './commands/checkmy'
 
 // Actions import
 import lastpage from './actions/lastpage'
@@ -53,6 +54,7 @@ bot
   .command('addad', addad)
   .command('addadcontent', addadcontent)
   .command('buyad', buyad)
+  .command('checkmy', checkmy)
 
 bot
   .action(/^.+lastpage$/, lastpage)
