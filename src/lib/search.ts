@@ -20,6 +20,7 @@ interface Query {
   desc: string
   type: ['bot' | 'supergroup' | 'channel']
   members: number[]
+  verify: boolean[]
   length: number
 }
 
@@ -47,13 +48,14 @@ export default class Search {
    * @param type     - 类型, 分三种: 机器人, 公开群组, 公开频道
    * @param members  - 人数, 机器人人数为 0
    */
-  async add (username: string, title: string, desc: string, type: 'bot' | 'supergroup' | 'channel' | 'NSFWchannel', members: number): Promise<void> {
+  async add (username: string, title: string, desc: string, type: 'bot' | 'supergroup' | 'channel' | 'NSFWchannel', members: number, verify?: boolean): Promise<void> {
     await users.create({
       username,
       title,
       desc,
       type,
-      members
+      members,
+      verify
     }).exec()
 
     const obj: Query = await users
@@ -91,7 +93,7 @@ export default class Search {
    *
    * 参数与 add 方法相同
    */
-  async update (username: string, title: string, desc: string, type: 'bot' | 'supergroup' | 'channel', members: number): Promise<void> {
+  async update (username: string, title: string, desc: string, type: 'bot' | 'supergroup' | 'channel', members: number, verify?: boolean): Promise<void> {
     this.remove(username)
 
     this.add(
@@ -99,7 +101,8 @@ export default class Search {
       title,
       desc,
       type,
-      members
+      members,
+      verify
     )
   }
 

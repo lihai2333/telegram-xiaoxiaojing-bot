@@ -56,7 +56,7 @@ export default async (ctx: any) => {
   if (result2) {
     ctx.reply(ctx.i18n.t('updateSuccess'))
 
-    await search.update(option.toLowerCase().replace('@', ''), obj.title, obj.description, obj.type as t, obj.members)
+    await search.update(option.toLowerCase().replace('@', ''), obj.title, obj.description, obj.type as t, obj.members, obj.verify)
   } else {
     ctx.reply(ctx.i18n.t('updateFailed'))
   }

@@ -8,7 +8,8 @@ interface Query {
   title: string
   desc: string
   type: ['bot' | 'supergroup' | 'channel']
-  members:number[]
+  members: number[]
+  verify: boolean[]
   length: number
 }
 
@@ -38,7 +39,12 @@ export default async (text: string, skip: number, adOpen: boolean): Promise<[str
     results[i].title = markdown(results[i].title)
     msg += `${skip + i + 1}. ${emoji(results[i].type[0])} [${results[i].title.length > 20
       ? results[i].title.substr(0, 20) + '...'
-      : results[i].title}](https://t.me/${results[i].username[0]})` + (results[i].type[0] === 'bot' ? '' : ` - ${results[i].members}`) + '\n'
+      : results[i].title}](https://t.me/${results[i].username[0]})`
+      + (results[i].type[0] === 'bot'
+        ? ''
+        : ` - ${results[i].members}`)
+      + (results[i].verify?.[0] === undefined ? '' : ' \u2611\uFE0F')
+      + '\n'
   }
 
   return [msg, results.length]

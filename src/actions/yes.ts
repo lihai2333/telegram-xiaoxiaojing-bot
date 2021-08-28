@@ -39,7 +39,8 @@ export default async (ctx: any): Promise<void> => {
     obj.title,
     obj.description,
     obj.type,
-    obj.members
+    obj.members,
+    obj.verify
   )
 
   await search.removeAuditing(username)
