@@ -45,7 +45,7 @@ export default async (username: string): Promise<Get> => {
   obj.username = $('title').text().split('@')[1] ?? ''
   obj.title = $('.tgme_page_title span').text()
   obj.description = $('.tgme_page_description').text() ?? ''
-  obj.verify = $('i').hasClass('verified-icon')
+  obj.verify = $('i').hasClass('verified-icon') === true ? true : undefined
 
   if (obj.title === '') {
     obj.type = 'NSFWchannel'
