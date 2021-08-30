@@ -30,6 +30,20 @@ function emoji (type: 'bot' | 'supergroup' | 'channel' | 'NSFWchannel'): string 
   }
 }
 
+function numberOfPeople (number: number): string {
+  let l = String(number).length
+
+  if (l > 3 && l < 7) {
+    return (number / 1000).toFixed(1) + 'K'
+  }
+
+  if (l > 6) {
+    return (number / 100_0000).toFixed(1) + 'M'
+  }
+
+  return String(number)
+}
+
 export default async (text: string, skip: number, adOpen: boolean): Promise<[string, number]> => {
   const results: Query[] = await search.find(text, skip)
 
@@ -42,7 +56,7 @@ export default async (text: string, skip: number, adOpen: boolean): Promise<[str
       : results[i].title}](https://t.me/${results[i].username[0]})`
       + (results[i].type[0] === 'bot'
         ? ''
-        : ` - ${results[i].members}`)
+        : ` - ${numberOfPeople(results[i].members[0])}`)
       + (results[i].verify?.[0] === undefined ? '' : ' \u2611\uFE0F')
       + '\n'
   }
