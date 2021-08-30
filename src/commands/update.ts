@@ -27,7 +27,7 @@ export default async (ctx: any) => {
      (option.replace(/^@[a-z][a-z0-9_]{2,30}[a-z0-9]$/i, '') ||
       option.replace(/_{2,}/g, '_') !== option ||
       option.toLowerCase().startsWith('@admin'))) {
-    ctx.reply(ctx.i18.t('updateError'))
+    ctx.reply(ctx.i18n.t('updateError'))
     return
   }
 
