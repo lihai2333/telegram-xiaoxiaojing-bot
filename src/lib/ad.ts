@@ -72,6 +72,10 @@ export default class Ad {
   async getAdContent (): Promise<string> {
     const results = await HGETALL('xiaoxiaojingAd')
 
+    if (Object.keys(results).length === 0) {
+      return ''
+    }
+
     const random: number = Math.floor(Math.random() * Object.keys(results).length)
 
     const id = Object.keys(results)[random]
