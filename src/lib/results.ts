@@ -56,7 +56,7 @@ export default async (text: string, skip: number, adOpen: boolean): Promise<[str
       : results[i].title}](https://t.me/${results[i].username[0]})`
       + (results[i].type[0] === 'bot'
         ? ''
-        : ` - ${numberOfPeople(results[i].members[0])}`)
+        : ` - ${numberOfPeople(results[i].members[0]).replace('.0', '')}`)
       + (results[i].verify?.[0] === undefined ? '' : ' \u2611\uFE0F')
       + '\n'
   }
