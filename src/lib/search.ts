@@ -34,7 +34,7 @@ export default class Search {
    */
   async find (keyword: string, skip: number): Promise<Query[]> {
     return await users
-      .find(`title:${encodeURI(keyword)} OR desc:${encodeURI(keyword)}`)
+      .find(`title:"${encodeURI(keyword)}" OR desc:"${encodeURI(keyword)}"`)
       .only()
       .limit(11)
       .skip(skip)
